@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdgom8meb3xbp"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_jufgc"]
+[ext_resource type="Script" path="res://scripts/label.gd" id="3_57vao"]
+[ext_resource type="PackedScene" uid="uid://co2temuet1oir" path="res://scenes/wall.tscn" id="3_vfall"]
+[ext_resource type="PackedScene" uid="uid://c5mfwubkio6fa" path="res://scenes/player_wall.tscn" id="4_hgvnr"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_jufgc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 732.0
+offset_top = 155.0
+offset_right = 772.0
+offset_bottom = 178.0
+script = ExtResource("3_57vao")
+
+[node name="walls" type="Node" parent="."]
+
+[node name="wall" parent="walls" instance=ExtResource("3_vfall")]
+
+[node name="wall2" parent="walls" instance=ExtResource("3_vfall")]
+position = Vector2(0, 657)
+
+[node name="player_wall" parent="walls" instance=ExtResource("4_hgvnr")]
+position = Vector2(-12, 11)
+
+[node name="player_wall2" parent="walls" instance=ExtResource("4_hgvnr")]
+position = Vector2(1164, -2)
+
+[connection signal="body_entered" from="walls/player_wall" to="Label" method="_on_player_wall_body_entered"]
+[connection signal="body_exited" from="walls/player_wall2" to="Label" method="_on_player_wall_2_body_exited"]

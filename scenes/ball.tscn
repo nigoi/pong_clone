@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://0acd4nwq7kk0"]
+
+[ext_resource type="Script" path="res://scripts/rigid_body_2d.gd" id="1_6y6mc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmsys"]
+size = Vector2(39, 42)
+
+[node name="ball" type="RigidBody2D"]
+position = Vector2(537, 235)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_6y6mc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_qmsys")
