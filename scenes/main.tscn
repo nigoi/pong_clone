@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdgom8meb3xbp"]
+[gd_scene load_steps=7 format=3 uid="uid://bdgom8meb3xbp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jufgc"]
+[ext_resource type="FontFile" uid="uid://dkauhayibudym" path="res://font/ARCADECLASSIC.TTF" id="2_wfusr"]
 [ext_resource type="Script" path="res://scripts/label.gd" id="3_57vao"]
 [ext_resource type="PackedScene" uid="uid://co2temuet1oir" path="res://scenes/wall.tscn" id="3_vfall"]
 [ext_resource type="PackedScene" uid="uid://c5mfwubkio6fa" path="res://scenes/player_wall.tscn" id="4_hgvnr"]
+[ext_resource type="PackedScene" uid="uid://2xv3bmw8myao" path="res://scenes/paddle.tscn" id="5_nxvde"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jufgc")
@@ -20,6 +22,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wfusr")
 horizontal_alignment = 1
 script = ExtResource("3_57vao")
 
@@ -35,6 +38,9 @@ position = Vector2(-12, 11)
 
 [node name="player_wall2" parent="walls" instance=ExtResource("4_hgvnr")]
 position = Vector2(1164, -2)
+
+[node name="paddle" parent="." instance=ExtResource("5_nxvde")]
+position = Vector2(20, 324)
 
 [connection signal="body_entered" from="walls/player_wall" to="Label" method="_on_player_wall_body_entered"]
 [connection signal="body_exited" from="walls/player_wall2" to="Label" method="_on_player_wall_2_body_exited"]

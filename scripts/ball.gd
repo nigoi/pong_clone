@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * speed * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
+		$AudioStreamPlayer.play()
 	if position.x > view_port.x or position.x < 0:
 		self.queue_free()
 		emit_signal("respawn")
