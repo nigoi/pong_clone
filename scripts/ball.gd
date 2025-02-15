@@ -1,6 +1,8 @@
 extends RigidBody2D
 var velocity = Vector2.ZERO
 var speed = 400
+var view_port = Vector2.ZERO
+signal respawn
 
 func start_direction():
 	var start = randi_range(1, 2)
@@ -11,12 +13,16 @@ func start_direction():
 	velocity.y = randf_range(-1, 1)
 
 func _ready() -> void:
+	view_port = get_viewport().size
 	start_direction()
-	position = get_viewport().size / 2
+	position = view_port / 2
+	print(view_port.x + 5)
 
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * speed * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
-	if position.x == get_viewport().size.x + 5 or get_viewport().size.x - 5:
-		queue_free()
+	if position.x > view_port.x or position.x < 0:
+		self.queue_free()
+		emit_signal("respawn")
+	
