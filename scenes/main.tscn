@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdgom8meb3xbp"]
+[gd_scene load_steps=8 format=3 uid="uid://bdgom8meb3xbp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jufgc"]
 [ext_resource type="FontFile" uid="uid://dkauhayibudym" path="res://font/ARCADECLASSIC.TTF" id="2_wfusr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://co2temuet1oir" path="res://scenes/wall.tscn" id="3_vfall"]
 [ext_resource type="PackedScene" uid="uid://c5mfwubkio6fa" path="res://scenes/player_wall.tscn" id="4_hgvnr"]
 [ext_resource type="PackedScene" uid="uid://csr4wf4un2658" path="res://scenes/paddle.tscn" id="5_nxvde"]
+[ext_resource type="Script" path="res://scripts/enemy_paddle.gd" id="7_ig6f5"]
 
 [node name="paddle" type="Node2D"]
 script = ExtResource("1_jufgc")
@@ -41,6 +42,10 @@ position = Vector2(1164, -2)
 
 [node name="paddle" parent="." instance=ExtResource("5_nxvde")]
 position = Vector2(25, 324)
+
+[node name="paddle2" parent="." instance=ExtResource("5_nxvde")]
+position = Vector2(1132, 324)
+script = ExtResource("7_ig6f5")
 
 [connection signal="body_entered" from="walls/player_wall" to="Label" method="_on_player_wall_body_entered"]
 [connection signal="body_exited" from="walls/player_wall2" to="Label" method="_on_player_wall_2_body_exited"]

@@ -3,6 +3,7 @@ var velocity = Vector2.ZERO
 var speed = 400
 var view_port = Vector2.ZERO
 signal respawn
+signal ball_position
 
 func start_direction():
 	var start = randi_range(1, 2)
@@ -22,6 +23,7 @@ func _ready() -> void:
 	print(view_port.x + 5)
 
 func _physics_process(delta: float) -> void:
+	emit_signal("ball_position", position.y)
 	var collision = move_and_collide(velocity * speed * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
