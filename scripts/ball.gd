@@ -12,6 +12,9 @@ func start_direction():
 		velocity.x = - 1
 	velocity.y = randf_range(-1, 1)
 
+func momentum():
+	print("momentum")
+
 func _ready() -> void:
 	view_port = get_viewport().size
 	start_direction()
