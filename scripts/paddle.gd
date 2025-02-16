@@ -13,7 +13,6 @@ func _physics_process(delta: float) -> void:
 			velocity.y -= 0.05
 		if velocity.y < 0:
 			velocity.y += 0.05
-	print(speed * velocity)
 	var collision = move_and_collide(velocity * speed * delta)
 	if collision:
 		emit_signal("momentum")

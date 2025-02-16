@@ -3,7 +3,7 @@ var velocity = Vector2.ZERO
 var speed = 400
 var view_port = Vector2.ZERO
 signal respawn
-signal ball_position
+signal ball_position(y_coodinate)
 
 func start_direction():
 	var start = randi_range(1, 2)
@@ -20,7 +20,6 @@ func _ready() -> void:
 	view_port = get_viewport().size
 	start_direction()
 	position = view_port / 2
-	print(view_port.x + 5)
 
 func _physics_process(delta: float) -> void:
 	emit_signal("ball_position", position.y)
