@@ -6,9 +6,9 @@ func _ready() -> void:
 		
 func follow(y_coodinate):
 	if position.y > y_coodinate:
-		velocity.y -= 0.1
+		velocity.y = - 1
 	if position.y < y_coodinate:
-		velocity.y += 0.1
+		velocity.y = 1
 	else:
 		if velocity.y > 0:
 			velocity.y -= 0.05

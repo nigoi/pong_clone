@@ -1,9 +1,9 @@
 extends RigidBody2D
 var velocity = Vector2.ZERO
-var speed = 400
+var speed = 600
 var view_port = Vector2.ZERO
-signal respawn
 signal ball_position(y_coodinate)
+signal respawn
 var paddle = null
 var paddle2 = null
 
@@ -36,4 +36,4 @@ func _physics_process(delta: float) -> void:
 	if position.x > get_viewport().size.x or position.x < 0:
 		self.queue_free()
 		emit_signal("respawn")
-	
+		
