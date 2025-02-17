@@ -1,9 +1,9 @@
 extends CharacterBody2D
-
 var speed = 400
-signal momentum
+signal momentum(velocityy)
 
 func _physics_process(delta: float) -> void:
+	emit_signal("momentum", velocity.y)
 	if Input.is_action_pressed("p1_up") and velocity.y > -1:
 		velocity.y -= 0.05
 	if Input.is_action_pressed("p1_down") and velocity.y < 1:
@@ -14,7 +14,3 @@ func _physics_process(delta: float) -> void:
 		if velocity.y < 0:
 			velocity.y += 0.05
 	var collision = move_and_collide(velocity * speed * delta)
-	if collision:
-		emit_signal("momentum")
-	
-	

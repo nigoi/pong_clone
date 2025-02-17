@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://0acd4nwq7kk0"]
 
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_6y6mc"]
-[ext_resource type="AudioStream" uid="uid://rwti38yjrda1" path="res://sound/18782.mp3" id="2_g7v2m"]
+[ext_resource type="AudioStream" uid="uid://brcvo6fydriim" path="res://sound/18782.mp3" id="2_g7v2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmsys"]
 
