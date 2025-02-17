@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var speed = 300
+var speed = 600
 
 func _ready() -> void:
 	pass

@@ -9,14 +9,16 @@ func tennisify(player1_score, player2_score):
 		while score[player1_score] < 50:
 			if score[player1_score] < 30:
 				score[player1_score] += 15
+				print(score)
 				return
 			else:
-				score[player1_score] < 50
-				score[player1_score] += 10
-				# Handle deuce		
+				if score[player1_score] < 50:
+					score[player1_score] += 10
+				# Handle deuce
 				if score[player1_score] == 40 and score[player2_score] == 40:
 					score[player1_score] = "Duece"
 					score[player2_score] = "Duece"
+					return
 				# Handle score win
 				elif score[player1_score] == 50 and score[player2_score] < 40:
 					score[player1_score] = "YOU WIN!"
@@ -24,7 +26,8 @@ func tennisify(player1_score, player2_score):
 					play_sound("res://sound/gamestart-272829.mp3")
 					var timer = $Timer
 					timer.start() 
-					get_tree().paused = true
+					return
+				else:
 					return 
 		# Handle advantage + advantage type win
 	if typeof(score[player1_score]) == TYPE_STRING:
@@ -51,8 +54,8 @@ func _on_player_wall_2_body_entered(body: Node2D) -> void:
 
 func _on_player_wall_body_entered(body: Node2D) -> void:
 	tennisify("player 2", "player 1")
-	player1.text = str(score["player 1"])
 	player2.text = "[wave amp=100 freq=5]" + str(score["player 2"]) + "[/wave]"
+	player1.text = str(score["player 1"])
 	play_sound("res://sound/retro-coin-3-236679.mp3")
 
 func play_sound(sound_path):

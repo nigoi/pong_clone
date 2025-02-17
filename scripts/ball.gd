@@ -1,6 +1,6 @@
 extends RigidBody2D
 var velocity = Vector2.ZERO
-var speed = 600
+var speed = 400
 var view_port = Vector2.ZERO
 signal ball_position(y_coodinate)
 signal respawn
@@ -25,6 +25,7 @@ func center_ball():
 	position = get_viewport().size / 2  
 
 func _physics_process(delta: float) -> void:
+	speed *= 1.002
 	emit_signal("ball_position", position.y)
 	var collision = move_and_collide(velocity * speed * delta)
 	if collision:
