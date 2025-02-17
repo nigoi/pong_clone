@@ -2,7 +2,7 @@ extends Node
 var audio_player = null
 var player1 = null
 var player2 = null
-var score = {"player 1": 40, "player 2": 30}
+var score = {"player 1": 0, "player 2": 0}
 
 func tennisify(player1_score, player2_score):
 	if typeof(score [player1_score]) == TYPE_INT:
@@ -42,14 +42,14 @@ func tennisify(player1_score, player2_score):
 
 func _on_player_wall_2_body_entered(body: Node2D) -> void:
 	tennisify("player 1", "player 2")
-	player1.text = "[wave amp=150 freq=2]" + str(score ["player 1"]) + "[/wave]"
+	player1.text = "[wave amp=100 freq=5]" + str(score ["player 1"]) + "[/wave]"
 	player2.text = str(score ["player 2"])
 	play_sound("res://sound/retro-coin-3-236679.mp3")
 
 func _on_player_wall_body_entered(body: Node2D) -> void:
 	tennisify("player 2", "player 1")
 	player1.text = str(score ["player 1"])
-	player2.text = "[wave amp=150 freq=2]" + str(score ["player 2"]) + "[/wave]"
+	player2.text = "[wave amp=100 freq=5]" + str(score ["player 2"]) + "[/wave]"
 	play_sound("res://sound/retro-coin-3-236679.mp3")
 
 func play_sound(sound_path):
@@ -61,7 +61,7 @@ func _ready() -> void:
 	audio_player = $AudioStreamPlayer
 	player1 = get_node("player1_label")
 	player2 = get_node("player2_label")
-	player1.position = Vector2(200, get_viewport().size.y * 0.10)
-	player2.position = Vector2(get_viewport().size.x -200, get_viewport().size.y * 0.10)
+	player1.position = Vector2(get_viewport().size.x / 2 + 200, get_viewport().size.y / 2 + 200)
+	player2.position = Vector2(get_viewport().size.x / 2 - 200, get_viewport().size.y / 2 - 200)
 	player1.text = str(score["player 1"])
 	player2.text = str(score["player 2"])
