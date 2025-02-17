@@ -4,46 +4,61 @@
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
-anchor_left = 0.25
-anchor_top = 0.25
-anchor_right = 0.75
-anchor_bottom = 0.75
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1q0f4")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+visibility_layer = 512
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(4.09111e-07, 0.39678, 0.397436, 1)
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.7
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="Control2/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/MarginContainer"]
 layout_mode = 2
 
-[node name="start" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="start" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Start"
 
-[node name="options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="options" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Options"
 
-[node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="quit" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
