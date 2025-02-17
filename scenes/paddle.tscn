@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" path="res://scripts/paddle.gd" id="1_wsmn1"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jlgio"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wq4so"]
+radius = 17.0
 height = 88.0
 
 [node name="paddle" type="CharacterBody2D"]
 script = ExtResource("1_wsmn1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_jlgio")
+position = Vector2(-7, 0)
+shape = SubResource("CapsuleShape2D_wq4so")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8

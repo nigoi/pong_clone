@@ -25,9 +25,11 @@ position = Vector2(-10, 12)
 position = Vector2(1164, -2)
 
 [node name="paddle" parent="." instance=ExtResource("5_nxvde")]
+top_level = true
 position = Vector2(25, 324)
 
 [node name="paddle2" parent="." instance=ExtResource("5_nxvde")]
+top_level = true
 position = Vector2(1132, 324)
 script = ExtResource("7_ig6f5")
 
@@ -36,27 +38,69 @@ script = ExtResource("6_8klm0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="label_master"]
 
-[node name="player1_label" parent="label_master" instance=ExtResource("7_w77dv")]
-layout_direction = 3
-anchors_preset = 6
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 0.0
-offset_bottom = 200.0
-grow_horizontal = 0
+[node name="Control" type="Control" parent="label_master"]
+layout_mode = 3
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="player2_label" parent="label_master" instance=ExtResource("7_w77dv")]
+[node name="CenterContainer" type="CenterContainer" parent="label_master/Control"]
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 279.0
+
+[node name="player1_label" parent="label_master/Control/CenterContainer" instance=ExtResource("7_w77dv")]
+custom_minimum_size = Vector2(200, 200)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="label_master/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="player2_label" parent="label_master/Control/CenterContainer2" instance=ExtResource("7_w77dv")]
+custom_minimum_size = Vector2(200, 200)
 layout_direction = 2
-anchors_preset = 4
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 0.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 200.0
-grow_horizontal = 1
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="label_master"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="label_master/Control2"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="label_master/Control2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.393742, 0.121482, 0.103587, 1)
 
 [connection signal="body_entered" from="walls/player_wall" to="label_master" method="_on_player_wall_body_entered"]
 [connection signal="body_entered" from="walls/player_wall2" to="label_master" method="_on_player_wall_2_body_entered"]

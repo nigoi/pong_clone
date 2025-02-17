@@ -59,9 +59,7 @@ func play_sound(sound_path):
 
 func _ready() -> void:
 	audio_player = $AudioStreamPlayer
-	player1 = get_node("player1_label")
-	player2 = get_node("player2_label")
-	player1.position = Vector2(get_viewport().size.x / 2 + 200, get_viewport().size.y / 2 + 200)
-	player2.position = Vector2(get_viewport().size.x / 2 - 200, get_viewport().size.y / 2 - 200)
+	player1 = get_node("Control/CenterContainer/player1_label")
+	player2 = get_node("Control/CenterContainer2/player2_label")
 	player1.text = str(score["player 1"])
 	player2.text = str(score["player 2"])

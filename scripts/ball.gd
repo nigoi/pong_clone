@@ -15,25 +15,25 @@ func start_direction():
 		velocity.x = - 1
 	velocity.y = randf_range(-1, 1)
 
-
 func _ready() -> void:
 	paddle = $paddle
 	paddle2 = $paddle2
 	view_port = get_viewport().size
 	start_direction()
-	position = view_port / 2
+
+func center_ball():
+	position = get_viewport().size / 2  
 
 func _physics_process(delta: float) -> void:
 	emit_signal("ball_position", position.y)
 	var collision = move_and_collide(velocity * speed * delta)
 	if collision:
 		var collision_name = collision.get_collider().name
-		print(collision_name)
 		
 		velocity = velocity.bounce(collision.get_normal())
 		$AudioStreamPlayer.play()
 		
-	if position.x > view_port.x or position.x < 0:
+	if position.x > get_viewport().size.x or position.x < 0:
 		self.queue_free()
 		emit_signal("respawn")
 	
