@@ -25,6 +25,11 @@ func play_sound(sound_path, audio_player):
 	audio_player.stream = sound
 	audio_player.play()
 	
+func music_off():
+	audio_player2.playing = false
+	audio_player2.autoplay = false
+	print("music off")
+	
 func _ready() -> void:
 	audio_player = $AudioStreamPlayer2D
 	audio_player2 = $AudioStreamPlayer2D2

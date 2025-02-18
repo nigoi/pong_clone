@@ -1,36 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyo3srw0vrx08"]
+[gd_scene load_steps=3 format=3 uid="uid://dyo3srw0vrx08"]
 
 [ext_resource type="Script" path="res://scripts/sub_menu.gd" id="1_fcddw"]
+[ext_resource type="FontFile" uid="uid://dkauhayibudym" path="res://font/ARCADECLASSIC.TTF" id="2_mpp20"]
 
 [node name="sub_menu" type="Control"]
 layout_mode = 3
-anchor_left = 0.25
-anchor_top = 0.25
-anchor_right = 0.75
-anchor_bottom = 0.75
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fcddw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+visibility_layer = 512
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(4.09111e-07, 0.39678, 0.397436, 1)
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.7
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="Control2/MarginContainer"]
 layout_mode = 2
 
-[node name="back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/MarginContainer"]
 layout_mode = 2
-text = "BACK"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/back" to="." method="_on_back_pressed"]
+[node name="back" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_mpp20")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="CheckButton" type="CheckButton" parent="Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Music"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.3
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_mpp20")
+theme_override_font_sizes/font_size = 80
+text = "WimblePong"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="button_up" from="Control2/MarginContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_button_up"]
