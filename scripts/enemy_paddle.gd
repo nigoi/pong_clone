@@ -6,14 +6,12 @@ func _ready() -> void:
 		
 func follow(y_coodinate):
 	if position.y > y_coodinate:
-		velocity.y = - 1
+		velocity.y = lerp(velocity.y, -1.0, 0.1)
 	if position.y < y_coodinate:
-		velocity.y = 1
+		velocity.y = lerp(velocity.y, 1.0, 0.1)
 	else:
-		if velocity.y > 0:
-			velocity.y -= 0.05
-		if velocity.y < 0:
-			velocity.y += 0.05
+		if velocity.y != 0.0:
+			velocity.y = lerp(velocity.y, 0.0, 0.05)
 	
 func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * speed * delta)

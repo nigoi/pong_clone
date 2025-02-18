@@ -1,11 +1,9 @@
 extends RigidBody2D
 var velocity = Vector2.ZERO
-var speed = 400
+var speed = 400.0
 var view_port = Vector2.ZERO
 signal ball_position(y_coodinate)
 signal respawn
-var paddle = null
-var paddle2 = null
 
 func start_direction():
 	var start = randi_range(1, 2)
@@ -16,8 +14,6 @@ func start_direction():
 	velocity.y = randf_range(-1, 1)
 
 func _ready() -> void:
-	paddle = $paddle
-	paddle2 = $paddle2
 	view_port = get_viewport().size
 	start_direction()
 
@@ -25,7 +21,7 @@ func center_ball():
 	position = get_viewport().size / 2  
 
 func _physics_process(delta: float) -> void:
-	speed *= 1.002
+	speed = lerp(speed, 1000.0, 0.001)
 	emit_signal("ball_position", position.y)
 	var collision = move_and_collide(velocity * speed * delta)
 	if collision:
